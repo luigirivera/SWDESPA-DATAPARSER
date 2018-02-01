@@ -4,16 +4,16 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 abstract public class DataParser{
-    public void parseDataAndGenerateOutput(String source, String dest)
+    public void parseDataAndGenerateOutput(String[] sourceArgs, String dest)
     {
         String data;
         List<List<String>> processed;
 
-        data = readData(source);
+        data = readData(sourceArgs);
         processed = processData(data);
         writeData(processed, dest);
     }
-    abstract String readData(String source);
+    abstract String readData(String[] sourceArgs);
     abstract List<List<String>> processData(String data);
 
     public void writeData(List<List<String>> processed, String dest)

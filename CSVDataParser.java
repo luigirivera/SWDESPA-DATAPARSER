@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 
 public class CSVDataParser extends DataParser{
-    String readData(String source){
+    String readData(String[] sourceArgs){
         FileReader fr = null;
         BufferedReader br = null;
         String data = "";
 
         try {
-            fr = new FileReader(source);
+            fr = new FileReader(sourceArgs[0]);
             br = new BufferedReader(fr);
 
             while (br.ready()) {
@@ -22,11 +22,14 @@ public class CSVDataParser extends DataParser{
 
             br.close();
             fr.close();
+            return data;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+            return "";
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            return "";
         }
-
-        return data;
     }
     List<List<String>> processData(String data){
         List<List<String>> processed = new ArrayList<List<String>>();
