@@ -10,8 +10,8 @@ abstract public class DataParser{
         processed = processData(data);
         writeData(processed, dest);
     }
-    abstract void readData(String source);
-    abstract void processData(String data);
+    abstract String readData(String source);
+    abstract List<List<String>> processData(String data);
 
     public void writeData(List<List<String>> processed, String dest)
     {
