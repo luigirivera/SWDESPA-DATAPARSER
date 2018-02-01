@@ -1,4 +1,7 @@
 import java.util.List;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 abstract public class DataParser{
     public void parseDataAndGenerateOutput(String source, String dest)
@@ -22,19 +25,18 @@ abstract public class DataParser{
             bw = new BufferedWriter(fw);
 
             for (List<String> row : processed){
-                for (String cell : row){
-                    bw.write(cell, 0, cell.length);
+                for (int ctr = 0 ; ctr < row.size()-1 ; ctr++) {
+                    bw.write(row.get(ctr), 0, row.get(ctr).length());
                     bw.write(',');
                 }
+                String last = row.get(row.size()-1);
+                bw.write(last, 0, last.length());
                 bw.newLine();
             }
+            bw.close();
+            fw.close();
         }catch(IOException e){
-            System.out.println(e.message());
-        }finally{
-            if (bw != null)
-                bw.close();
-            if (fw != null)
-                fw.close();
+            System.out.println(e.getMessage());
         }
     }
 }

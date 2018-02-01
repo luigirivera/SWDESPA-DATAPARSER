@@ -8,7 +8,7 @@ public class TemplateMethodMain{
         databaseDataParser.parseDataAndGenerateOutput();
         */
         CSVDataParser csvDataParser = new CSVDataParser();
-        csvDataParser.parseDataAndGenerateOutput(SamplePaths.SOURCE, SamplePaths.DEST);
+        csvDataParser.parseDataAndGenerateOutput(SamplePaths.SOURCE.toString(), SamplePaths.DEST.toString());
     }
 }
 
@@ -18,8 +18,8 @@ enum SamplePaths{
 
     public String toString(){
         switch(this){
-            case SOURCE: return "";
-            case DEST: return "";
+            case SOURCE: return "sample-csv.csv";
+            case DEST: return "output-csv.csv";
             default: return "invalid";
         }
     }
